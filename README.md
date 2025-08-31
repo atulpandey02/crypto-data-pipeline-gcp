@@ -29,7 +29,7 @@ The project reflects **end-to-end data engineering thinking** from API integrati
 
 ## Architecture
 
-![Architecture Diagram](images/crypto-pipeline-architecture.png)
+<img src="images/architecture_diagram.png" alt="Architecture Diagram" width="800"/>
 
 **Data Flow**: CoinGecko API → Cloud Storage → BigQuery → Analytics
 
@@ -105,7 +105,7 @@ Initially developed and tested using:
 - **Local Python environment** with GCP SDK
 - **Service account authentication** for cloud services
 
-![Local Airflow Development](images/local-airflow-development.png)
+<img src="images/Local_Airflow_Development.png" alt="Local Airflow Development" width="800"/>
 
 ### Production Deployment  
 Migrated to **Google Cloud Composer** for enterprise production:
@@ -114,19 +114,19 @@ Migrated to **Google Cloud Composer** for enterprise production:
 - **Integrated monitoring** with Cloud Logging and Monitoring
 - **High availability** with automatic failover
 
-![Cloud Composer Production](images/cloud-composer-production.png)
+<img src="images/Cloud_Composer_Production.png" alt="Cloud Composer Production" width="800"/>
 
 ---
 
 ## 📷 Pipeline Execution
 
 ### Successful DAG Runs
-![Pipeline Success](images/airflow-dag-success.png)
+<img src="images/Pipeline_Success.png" alt="Pipeline Success" width="800"/>
 
 ### Data Storage Results
 Consistent data collection with proper file organization:
 
-![Data Storage Results](images/gcs-data-storage.png)
+<img src="images/Data_Storage_Results.png" alt="Data Storage Results" width="800"/>
 
 ---
 
