@@ -42,7 +42,7 @@ The project reflects **end-to-end data engineering thinking** from API integrati
 
 ---
 
-## 🔄 Workflow Overview
+## Workflow Overview
 
 ### 1. Data Ingestion
 - **Source**: CoinGecko REST API (top 10 cryptocurrencies by market cap)
@@ -104,7 +104,7 @@ WHERE date >= DATE_SUB(CURRENT_DATE(), INTERVAL 90 DAY);
 
 ---
 
-## 🚀 Deployment Journey
+## Deployment Journey
 
 ### Local Development
 Initially developed and tested using:
@@ -125,7 +125,7 @@ Migrated to **Google Cloud Composer** for enterprise production:
 
 ---
 
-## 📷 Pipeline Execution
+##  Pipeline Execution
 
 ### Task Orchestration
 **Data Collection Pipeline:**  
@@ -148,7 +148,7 @@ Consistent data collection with proper file organization:
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 crypto-data-pipeline/
@@ -168,7 +168,7 @@ crypto-data-pipeline/
 
 ---
 
-## 🔧 Technical Implementation
+##  Technical Implementation
 
 ### Airflow DAG Components
 ```python
@@ -219,7 +219,7 @@ def _transform_data():
 
 ---
 
-## 💡 Technical Achievements
+##  Technical Achievements
 
 **Airflow Implementation**:
 - Multi-task DAG orchestration with proper dependencies
@@ -241,7 +241,7 @@ def _transform_data():
 
 ---
 
-## 📊 Business Impact
+##  Business Impact
 
 - **Real-time Monitoring**: Track cryptocurrency market movements every 10 minutes
 - **Risk Management**: Calculate volatility metrics for investment decisions
