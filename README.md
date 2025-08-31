@@ -60,8 +60,8 @@ The project reflects **end-to-end data engineering thinking** from API integrati
 
 ### 3. Data Warehouse Loading
 - **Target**: BigQuery optimized tables
-- **Schema**: Strongly-typed with proper constraints
-- **Strategy**: Append-only for historical analysis
+- **Schema**: Strongly typed with proper constraints
+- **Strategy**: Append only for historical analysis
 - **Performance**: Partitioned and optimized for analytics
 
 ### 4. Analytics Layer
@@ -127,15 +127,16 @@ Migrated to **Google Cloud Composer** for enterprise production:
 
 ## 📷 Pipeline Execution
 
-### Pipeline Execution Steps
-1. **fetch_data_task** - Retrieve cryptocurrency data from CoinGecko API
-2. **create_bucket_task** - Provision Cloud Storage bucket for data lake
-3. **upload_raw_data_to_gcs_task** - Store raw JSON data in GCS
-4. **transformed_data_task** - Convert JSON to structured CSV format  
-5. **upload_transformed_data_to_gcs_task** - Store processed data in GCS
-6. **create_bigquery_dataset_task** - Provision BigQuery dataset
-7. **create_bigquery_table_task** - Create table with defined schema
-8. **load_to_bigquery** - Load transformed data into BigQuery warehouse
+### Task Orchestration
+**Data Collection Pipeline:**  
+fetch_data_task → create_bucket_task → upload_raw_data_to_gcs_task
+
+**Transformation Pipeline:**  
+upload_raw_data_to_gcs_task → transformed_data_task → upload_transformed_data_to_gcs_task
+
+**Data Warehouse Pipeline:**  
+upload_transformed_data_to_gcs_task → create_bigquery_dataset_task → create_bigquery_table_task → load_to_bigquery
+
 
 ### Successful DAG Runs
 <img src="images/Pipeline_Success.png" alt="Pipeline Success" width="800"/>
