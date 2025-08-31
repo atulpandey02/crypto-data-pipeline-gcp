@@ -33,6 +33,13 @@ The project reflects **end-to-end data engineering thinking** from API integrati
 
 **Data Flow**: CoinGecko API → Cloud Storage → BigQuery → Analytics
 
+**Technology Stack**:
+- **Data Ingestion**: Apache Airflow with PythonOperator for API calls
+- **Storage**: Cloud Storage buckets (raw_data/, transformed_data/)  
+- **Processing**: Local transformation with pandas DataFrame operations
+- **Warehouse**: BigQuery with optimized schema and partitioning
+- **Orchestration**: Cloud Composer (managed Airflow) for production scheduling
+
 ---
 
 ## 🔄 Workflow Overview
@@ -120,6 +127,16 @@ Migrated to **Google Cloud Composer** for enterprise production:
 
 ## 📷 Pipeline Execution
 
+### Pipeline Execution Steps
+1. **fetch_data_task** - Retrieve cryptocurrency data from CoinGecko API
+2. **create_bucket_task** - Provision Cloud Storage bucket for data lake
+3. **upload_raw_data_to_gcs_task** - Store raw JSON data in GCS
+4. **transformed_data_task** - Convert JSON to structured CSV format  
+5. **upload_transformed_data_to_gcs_task** - Store processed data in GCS
+6. **create_bigquery_dataset_task** - Provision BigQuery dataset
+7. **create_bigquery_table_task** - Create table with defined schema
+8. **load_to_bigquery** - Load transformed data into BigQuery warehouse
+
 ### Successful DAG Runs
 <img src="images/Pipeline_Success.png" alt="Pipeline Success" width="800"/>
 
@@ -175,19 +192,43 @@ BQ_SCHEMA = [
 ]
 ```
 
+### Data Transformation Logic
+```python
+def _transform_data():
+    """Transform raw JSON data to structured CSV format"""
+    with open("crypto_data.json", 'r') as f:
+        data = json.load(f)
+
+    transformed_data = []
+    for item in data:
+        transformed_data.append({
+            'id': item['id'],
+            'symbol': item['symbol'], 
+            'name': item['name'],
+            'current_price': item['current_price'],
+            'market_cap': item['market_cap'],
+            'total_volume': item['total_volume'],
+            'last_updated': item['last_updated'],
+            'timestamp': datetime.utcnow().isoformat()  # Pipeline metadata
+        })
+
+    df = pd.DataFrame(transformed_data)
+    df.to_csv("transformed_data.csv", index=False)
+```
+
 ---
 
 ## 💡 Technical Achievements
 
-**Airflow Mastery**:
-- Complex DAG orchestration with 8+ interconnected tasks
+**Airflow Implementation**:
+- Multi-task DAG orchestration with proper dependencies
 - Proper operator selection for cloud-native workflows  
 - Dynamic file naming with Airflow macros (`{{ ts_nodash }}`)
 - Task dependency management and error propagation
 
 **Google Cloud Integration**:
-- Multi-service architecture (GCS, BigQuery, Cloud Composer)
-- Service account security and IAM best practices
+- Integrated pipeline using GCS, BigQuery, and Cloud Composer
+- Proper service account configuration and IAM permissions
 - Resource provisioning automation
 - Cost optimization through proper resource lifecycle
 
