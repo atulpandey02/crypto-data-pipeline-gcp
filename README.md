@@ -29,7 +29,7 @@ The project reflects **end-to-end data engineering thinking** from API integrati
 
 ## Architecture
 
-<img src="images/architecture_diagram.png" alt="Architecture Diagram" width="800"/>
+<img src="images/architecture_diagram.png" alt="Architecture Diagram" width="500"/>
 
 **Data Flow**: CoinGecko API → Cloud Storage → BigQuery → Analytics
 
@@ -112,7 +112,7 @@ Initially developed and tested using:
 - **Local Python environment** with GCP SDK
 - **Service account authentication** for cloud services
 
-<img src="images/Local_Airflow_Development.png" alt="Local Airflow Development" width="800"/>
+<img src="images/Local_Airflow_Development.png" alt="Local Airflow Development" width="500"/>
 
 ### Production Deployment  
 Migrated to **Google Cloud Composer** for enterprise production:
@@ -121,7 +121,7 @@ Migrated to **Google Cloud Composer** for enterprise production:
 - **Integrated monitoring** with Cloud Logging and Monitoring
 - **High availability** with automatic failover
 
-<img src="images/Cloud_Composer_Production.png" alt="Cloud Composer Production" width="800"/>
+<img src="images/Cloud_Composer_Production.png" alt="Cloud Composer Production" width="500"/>
 
 ---
 
@@ -139,12 +139,12 @@ upload_transformed_data_to_gcs_task → create_bigquery_dataset_task → create_
 
 
 ### Successful DAG Runs
-<img src="images/Pipeline_Success.png" alt="Pipeline Success" width="800"/>
+<img src="images/Pipeline_Success.png" alt="Pipeline Success" width="500"/>
 
 ### Data Storage Results
 Consistent data collection with proper file organization:
 
-<img src="images/Data_Storage_Results.png" alt="Data Storage Results" width="800"/>
+<img src="images/Data_Storage_Results.png" alt="Data Storage Results" width="500"/>
 
 ---
 
